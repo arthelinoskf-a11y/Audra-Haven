@@ -1,0 +1,691 @@
+/* ============================================================
+   AUDRA HAVEN - MASTER STYLESHEET
+   Cream + Gold Elegan | Light & Dark Mode
+   ============================================================ */
+
+/* ============ VARIABEL LIGHT MODE ============ */
+:root,
+[data-theme="light"] {
+    --bg-body:         #faf6ef;
+    --bg-card:         #fffdf8;
+    --bg-hover:        #f5efe3;
+    --bg-input:        #fffdf8;
+    --border:          #e8dfd0;
+    --border-strong:   #d4c4a8;
+    --text-primary:    #3d2f1f;
+    --text-secondary:  #8b7355;
+    --text-muted:      #b8a284;
+    --gold:            #b8935a;
+    --gold-dark:       #9a7a44;
+    --gold-light:      #d4b483;
+    --sidebar-bg-1:    #3d2f1f;
+    --sidebar-bg-2:    #2d2317;
+    --sidebar-text:    #d4c4a8;
+    --sidebar-muted:   #8b7355;
+    --sidebar-active:  #b8935a;
+    --sidebar-border:  #524232;
+    --success:         #7a9471;
+    --success-bg:      #e8f0e5;
+    --danger:          #b85450;
+    --danger-bg:       #f5e3e2;
+    --warning:         #d4a05a;
+    --warning-bg:      #f5ecd9;
+    --info:            #8b9bb4;
+    --info-bg:         #e6ebf2;
+    --shadow:          0 1px 3px rgba(61, 47, 31, 0.06);
+    --shadow-md:       0 4px 12px rgba(61, 47, 31, 0.08);
+    --shadow-lg:       0 8px 24px rgba(61, 47, 31, 0.12);
+}
+
+/* ============ VARIABEL DARK MODE ============ */
+[data-theme="dark"] {
+    --bg-body:         #3a2e22;
+    --bg-card:         #4a3b28;
+    --bg-hover:        #5a4832;
+    --bg-input:        #453826;
+    --border:          #6b5738;
+    --border-strong:   #7a6544;
+    --text-primary:    #faf0d8;
+    --text-secondary:  #d8c4a0;
+    --text-muted:      #a89370;
+    --gold:            #e8c890;
+    --gold-dark:       #d4b078;
+    --gold-light:      #f5dfb0;
+    --sidebar-bg-1:    #2d2317;
+    --sidebar-bg-2:    #1f180f;
+    --sidebar-text:    #ede0c4;
+    --sidebar-muted:   #a89070;
+    --sidebar-active:  #c4a06a;
+    --sidebar-border:  #4a3b28;
+    --success:         #b8d4a8;
+    --success-bg:      #3a4a32;
+    --danger:          #f0a8a0;
+    --danger-bg:       #4a3230;
+    --warning:         #f0c890;
+    --warning-bg:      #4a3a20;
+    --info:            #b8c8e0;
+    --info-bg:         #303848;
+    --shadow:          0 1px 3px rgba(0, 0, 0, 0.3);
+    --shadow-md:       0 4px 12px rgba(0, 0, 0, 0.4);
+    --shadow-lg:       0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* ============ RESET ============ */
+* {
+    box-sizing: border-box;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-body);
+    color: var(--text-primary);
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 14px;
+}
+
+/* ============================================================
+   LAYOUT: SIDEBAR + KONTEN
+   ============================================================ */
+.app-layout {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.app-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-width: 0;
+}
+
+.app-main {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px;
+}
+
+.app-footer {
+    flex-shrink: 0;
+    background-color: var(--bg-card);
+    border-top: 1px solid var(--border);
+    padding: 12px 24px;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+.app-sidebar {
+    width: 260px;
+    flex-shrink: 0;
+    background: linear-gradient(180deg, var(--sidebar-bg-1) 0%, var(--sidebar-bg-2) 100%);
+    color: var(--sidebar-text);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.sidebar-brand {
+    height: 64px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 20px;
+    border-bottom: 1px solid var(--sidebar-border);
+}
+
+.sidebar-brand-logo {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+}
+
+.sidebar-brand-name {
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: var(--gold-light);
+}
+
+.sidebar-nav {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px 0;
+}
+
+.sidebar-link {
+    display: block;
+    padding: 12px 24px;
+    color: var(--sidebar-text);
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.2s;
+    border-left: 3px solid transparent;
+    cursor: pointer;
+}
+
+.sidebar-link:hover {
+    background-color: rgba(184, 147, 90, 0.15);
+    color: #fff;
+}
+
+.sidebar-link.active {
+    background-color: var(--sidebar-active);
+    color: #fff;
+    border-left-color: var(--gold-light);
+    font-weight: 600;
+}
+
+.sidebar-link.disabled {
+    color: var(--sidebar-muted);
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.sidebar-user {
+    flex-shrink: 0;
+    padding: 16px 20px;
+    border-top: 1px solid var(--sidebar-border);
+    font-size: 13px;
+}
+
+.sidebar-user-label {
+    color: var(--sidebar-muted);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+}
+
+.sidebar-user-name {
+    color: var(--gold-light);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.sidebar-user-role {
+    color: var(--sidebar-muted);
+    font-size: 12px;
+    text-transform: capitalize;
+}
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.app-navbar {
+    height: 64px;
+    flex-shrink: 0;
+    background-color: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    gap: 16px;
+}
+
+.navbar-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.navbar-date {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.btn-logout {
+    background-color: var(--danger);
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+}
+
+.btn-logout:hover {
+    background-color: #9d4541;
+}
+
+/* ============================================================
+   THEME TOGGLE
+   ============================================================ */
+.theme-toggle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--bg-hover);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    padding: 0;
+    transition: all 0.3s;
+}
+
+.theme-toggle:hover {
+    background-color: var(--gold);
+    color: #fff;
+    transform: rotate(20deg);
+}
+
+/* ============================================================
+   FLASH MESSAGE
+   ============================================================ */
+.flash {
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    border: 1px solid;
+}
+
+.flash-success {
+    background-color: var(--success-bg);
+    border-color: var(--success);
+    color: var(--success);
+}
+
+.flash-error {
+    background-color: var(--danger-bg);
+    border-color: var(--danger);
+    color: var(--danger);
+}
+
+/* ============================================================
+   CARD
+   ============================================================ */
+.card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    padding: 20px;
+}
+
+/* ============================================================
+   TABEL
+   ============================================================ */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table thead {
+    background-color: var(--bg-hover);
+}
+
+table th {
+    padding: 12px 16px;
+    text-align: left;
+    color: var(--text-secondary);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--border);
+}
+
+table td {
+    padding: 12px 16px;
+    color: var(--text-primary);
+    font-size: 14px;
+    border-bottom: 1px solid var(--border);
+}
+
+table tbody tr:hover {
+    background-color: rgba(184, 147, 90, 0.08);
+}
+
+[data-theme="dark"] table tbody tr:hover {
+    background-color: rgba(232, 200, 144, 0.06);
+}
+
+/* ============================================================
+   KAPSUL AKSI (Edit/Hapus/Password)
+   ============================================================ */
+td a.text-blue-600,
+td button.text-red-600,
+td a.text-yellow-600 {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid;
+    transition: all 0.2s;
+    margin: 0 2px;
+    line-height: 1.4;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+td a.text-blue-600 {
+    background-color: rgba(184, 147, 90, 0.15);
+    border-color: var(--gold);
+    color: var(--gold-dark);
+}
+td a.text-blue-600:hover {
+    background-color: var(--gold);
+    color: #fff;
+    border-color: var(--gold-dark);
+}
+
+td button.text-red-600 {
+    background-color: var(--danger-bg);
+    border-color: var(--danger);
+    color: var(--danger);
+}
+td button.text-red-600:hover {
+    background-color: var(--danger);
+    color: #fff;
+}
+
+td a.text-yellow-600 {
+    background-color: var(--warning-bg);
+    border-color: var(--warning);
+    color: var(--warning);
+}
+td a.text-yellow-600:hover {
+    background-color: var(--warning);
+    color: #2d2317;
+}
+
+[data-theme="dark"] td a.text-blue-600 {
+    background-color: rgba(232, 200, 144, 0.12);
+    color: var(--gold);
+}
+[data-theme="dark"] td a.text-blue-600:hover {
+    background-color: var(--gold);
+    color: #2d2317;
+}
+[data-theme="dark"] td button.text-red-600 {
+    background-color: rgba(240, 168, 160, 0.12);
+    color: var(--danger);
+}
+[data-theme="dark"] td button.text-red-600:hover {
+    background-color: var(--danger);
+    color: #2d2317;
+}
+[data-theme="dark"] td a.text-yellow-600 {
+    background-color: rgba(240, 200, 144, 0.15);
+    color: var(--warning);
+}
+[data-theme="dark"] td a.text-yellow-600:hover {
+    background-color: var(--warning);
+    color: #2d2317;
+}
+
+/* ============================================================
+   INPUT / FORM
+   ============================================================ */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+select,
+textarea {
+    background-color: var(--bg-input);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    width: 100%;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(184, 147, 90, 0.15);
+}
+
+/* ============================================================
+   TOMBOL
+   ============================================================ */
+button.bg-blue-600,
+a.bg-blue-600,
+.btn-primary {
+    background-color: var(--gold);
+    color: #2d2317;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    border: none;
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s;
+}
+
+button.bg-blue-600:hover,
+a.bg-blue-600:hover,
+.btn-primary:hover {
+    background-color: var(--gold-dark);
+    color: #1a140e;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+button.bg-gray-200, a.bg-gray-200,
+button.bg-gray-300, a.bg-gray-300 {
+    background-color: var(--bg-hover);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    font-family: inherit;
+    transition: all 0.2s;
+}
+button.bg-gray-200:hover, a.bg-gray-200:hover,
+button.bg-gray-300:hover, a.bg-gray-300:hover {
+    background-color: var(--border);
+}
+
+button.bg-red-600, a.bg-red-600 {
+    background-color: var(--danger);
+    color: #fff;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    font-family: inherit;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+button.bg-red-600:hover, a.bg-red-600:hover {
+    background-color: #9d4541;
+}
+
+button.bg-gray-700, a.bg-gray-700 {
+    background-color: var(--text-secondary);
+    color: var(--bg-card);
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    font-family: inherit;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+button.bg-gray-700:hover, a.bg-gray-700:hover {
+    background-color: var(--text-primary);
+}
+
+button.bg-yellow-500, a.bg-yellow-500 {
+    background-color: var(--warning);
+    color: #3d2f1f;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    font-family: inherit;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+button.bg-yellow-500:hover, a.bg-yellow-500:hover {
+    background-color: #c4904a;
+}
+
+/* ============================================================
+   OVERRIDE TAILWIND (untuk halaman CRUD)
+   ============================================================ */
+.bg-white, .bg-gray-50, .bg-gray-100 { background-color: var(--bg-card) !important; }
+.text-gray-400 { color: var(--text-muted) !important; }
+.text-gray-500, .text-gray-600 { color: var(--text-secondary) !important; }
+.text-gray-700, .text-gray-800, .text-gray-900 { color: var(--text-primary) !important; }
+.border-gray-100, .border-gray-200, .border-gray-300 { border-color: var(--border) !important; }
+.bg-green-100 { background-color: var(--success-bg) !important; }
+.text-green-600, .text-green-700 { color: var(--success) !important; }
+.bg-red-100 { background-color: var(--danger-bg) !important; }
+.text-red-600, .text-red-700 { color: var(--danger) !important; }
+.bg-yellow-100 { background-color: var(--warning-bg) !important; }
+.text-yellow-600, .text-yellow-700 { color: var(--gold-dark) !important; }
+.bg-indigo-100 { background-color: var(--info-bg) !important; }
+.text-indigo-600, .text-indigo-700 { color: var(--info) !important; }
+.bg-purple-100 { background-color: var(--info-bg) !important; }
+.text-purple-700 { color: var(--info) !important; }
+
+/* ============================================================
+   REPORTS / LAPORAN
+   ============================================================ */
+table.data {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10pt;
+}
+table.data th,
+table.data td {
+    border: 1px solid var(--border-strong);
+    padding: 5px 6px;
+    color: var(--text-primary);
+}
+table.data th {
+    background: var(--bg-hover);
+    color: var(--text-secondary);
+    font-weight: bold;
+    text-align: center;
+}
+table.data tfoot td {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+    font-weight: bold;
+}
+table.data td.num { text-align: right; }
+table.data td.center { text-align: center; }
+
+.ringkasan { margin: 15px 0; }
+.ringkasan table {
+    width: 60%;
+    border-collapse: collapse;
+    font-size: 10pt;
+}
+.ringkasan td {
+    padding: 4px 8px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-primary);
+}
+.ringkasan td:last-child { text-align: right; font-weight: bold; }
+
+/* ============================================================
+   BOOKINGS - KARTU TAB
+   ============================================================ */
+.ring-2.ring-offset-2.ring-blue-500 {
+    --tw-ring-color: var(--gold) !important;
+    --tw-ring-offset-color: var(--bg-body) !important;
+}
+
+/* ============================================================
+   ANIMASI & EFEK PREMIUM (TAMBAHAN BARU)
+   ============================================================ */
+
+/* 1. Animasi Fade In untuk Konten Utama */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.app-main > * {
+    animation: fadeInUp 0.4s ease-out forwards;
+}
+
+/* 2. Efek Hover pada Kartu (Card & Statistik) */
+.card, .bg-white.rounded-lg.shadow {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover, .bg-white.rounded-lg.shadow:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(61, 47, 31, 0.1) !important;
+}
+
+/* 3. Animasi Baris Tabel */
+tbody tr {
+    animation: fadeInUp 0.3s ease-out forwards;
+    opacity: 0;
+}
+tbody tr:nth-child(1) { animation-delay: 0.05s; }
+tbody tr:nth-child(2) { animation-delay: 0.10s; }
+tbody tr:nth-child(3) { animation-delay: 0.15s; }
+tbody tr:nth-child(4) { animation-delay: 0.20s; }
+tbody tr:nth-child(5) { animation-delay: 0.25s; }
+
+/* 4. Efek Hover Baris Tabel */
+table tbody tr {
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+table tbody tr:hover {
+    background-color: rgba(184, 147, 90, 0.08) !important;
+    transform: scale(1.002);
+}
+
+/* 5. Efek Tombol Ditekan */
+button:active, a.btn:active, .btn-gold:active, .btn-dark:active {
+    transform: scale(0.97);
+}
